@@ -17,8 +17,8 @@ from threading import Thread
 
 import sys
 sys.path.insert(0, '/var/www/html/earthrover')
-import util as ut
-ut.init_gpio()
+# import util as ut
+# ut.init_gpio()
 
 cap = cv2.VideoCapture(0)
 threshold=0.2
@@ -37,20 +37,20 @@ object_to_track='person'
 
 #-----initialise motor speed-----------------------------------
 
-import RPi.GPIO as GPIO 
-GPIO.setmode(GPIO.BCM)  # choose BCM numbering scheme  
+# import RPi.GPIO as GPIO 
+# GPIO.setmode(GPIO.BCM)  # choose BCM numbering scheme  
       
-GPIO.setup(20, GPIO.OUT)# set GPIO 20 as output pin
-GPIO.setup(21, GPIO.OUT)# set GPIO 21 as output pin
+# GPIO.setup(20, GPIO.OUT)# set GPIO 20 as output pin
+# GPIO.setup(21, GPIO.OUT)# set GPIO 21 as output pin
       
-pin20 = GPIO.PWM(20, 100)    # create object pin20 for PWM on port 20 at 100 Hertz  
-pin21 = GPIO.PWM(21, 100)    # create object pin21 for PWM on port 21 at 100 Hertz  
+# pin20 = GPIO.PWM(20, 100)    # create object pin20 for PWM on port 20 at 100 Hertz  
+# pin21 = GPIO.PWM(21, 100)    # create object pin21 for PWM on port 21 at 100 Hertz  
 
-val=100 # maximum speed
-pin20.start(val)              # start pin20 on 0 percent duty cycle (off)  
-pin21.start(val)              # start pin21 on 0 percent duty cycle (off)  
+# val=100 # maximum speed
+# pin20.start(val)              # start pin20 on 0 percent duty cycle (off)  
+# pin21.start(val)              # start pin21 on 0 percent duty cycle (off)  
     
-print("speed set to: ", val)
+# print("speed set to: ", val)
 #------------------------------------------
 
 def track_object(objs,labels):
@@ -61,8 +61,8 @@ def track_object(objs,labels):
     
     if(len(objs)==0):
         print("no objects to track")
-        ut.stop()
-        ut.red_light("OFF")
+        # ut.stop()
+        # ut.red_light("OFF")
         return
 
     flag=0
@@ -103,33 +103,33 @@ def move_robot():
     
     if(abs(x_deviation)<tolerance):
         if(y<0.1):
-            ut.red_light("ON")
-            ut.stop()
+            # ut.red_light("ON")
+            # ut.stop()
             print("reached person...........")
     
         else:
-            ut.red_light("OFF")
-            ut.forward()
+            # ut.red_light("OFF")
+            # ut.forward()
             print("moving robot ...FORWARD....!!!!!!!!!!!!!!")
     
     
     else:
-        ut.red_light("OFF")
+        # ut.red_light("OFF")
         if(x_deviation>=tolerance):
             delay1=get_delay(x_deviation)
                 
-            ut.left()
+            # ut.left()
             time.sleep(delay1)
-            ut.stop()
+            # ut.stop()
             print("moving robot ...Left....<<<<<<<<<<")
     
                 
         if(x_deviation<=-1*tolerance):
             delay1=get_delay(x_deviation)
                 
-            ut.right()
+            # ut.right()
             time.sleep(delay1)
-            ut.stop()
+            # ut.stop()
             print("moving robot ...Right....>>>>>>>>")
     
 
