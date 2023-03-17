@@ -1,1 +1,4 @@
 pip install common
+pip install opencv-python
+pip install python-time
+pip install threaded
