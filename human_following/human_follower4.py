@@ -344,4 +344,9 @@ def append_text_img1(cv2_im, objs, labels, arr_dur, arr_track_data):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2204, threaded=True) # Run FLASK
-    main()
+
+    cv2.imshow('Original' , main())
+                
+    cv2.waitKey(1)
+
+    # main()
