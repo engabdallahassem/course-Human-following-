@@ -1,4 +1,5 @@
-pip install common
 pip install opencv-python
 pip install python-time
 pip install threaded
+pip install os-sys
+pip install Pillow
